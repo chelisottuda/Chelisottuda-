@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="tg">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ZekrAI – Ёрдамчии Фаннӣ</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #2c3e50;
+        }
+        select, textarea, button {
+            width: 90%;
+            max-width: 500px;
+            margin: 10px auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+        #output {
+            background: #fff;
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-top: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h1>ZekrAI</h1>
+    <p>Масъаларо нависед, забонро интихоб кунед ва ҷавоб гиред!</p>
+
+    <select id="language">
+        <option value="tj">Тоҷикӣ</option>
+        <option value="en">English</option>
+        <option value="ru">Русский</option>
+    </select>
+
+    <textarea id="question" rows="5" placeholder="Масъаларо нависед..."></textarea>
+    <button onclick="getAnswer()">Ҷавоб гир</button>
+
+    <div id="output"></div>
+
+    <script>
+        function getAnswer() {
+            const question = document.getElementById("question").value.trim();
+            const language = document.getElementById("language").value;
+            const output = document.getElementById("output");
+
+            if (!question) {
+                output.innerHTML = "Лутфан масъала ё савол нависед.";
+                return;
+            }
+
+            output.innerHTML = "⏳ Лутфан интизор шавед... (ин версияи демон аст)";
+
+            setTimeout(() => {
+                let response = {
+                    tj: "Ин системаи зеҳни сунъӣ барои ёрии фаннӣ аст.",
+                    en: "This is an artificial intelligence system for academic help.",
+                    ru: "Это система искусственного интеллекта для учебной помощи."
+                };
+                output.innerHTML = response[language] || response["tj"];
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
